@@ -4,6 +4,9 @@ import { PostStoreService } from '../../services/post-store.service';
 import { ApiService, Post } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -21,7 +24,13 @@ export class PostListComponent implements OnInit {
   totalPages = 10; 
 
 
-  constructor(private api: ApiService, private store: PostStoreService) {}
+  constructor(
+  private api: ApiService,
+  private store: PostStoreService,
+  private auth: AuthService,
+  private router: Router
+) {}
+
 
   ngOnInit(): void {
   this.loadPage(1);
@@ -57,6 +66,12 @@ loadPage(page: number) {
     }
   });
 }
+
+logout(): void {
+  this.auth.logout();
+  this.router.navigate(['/login']);
+}
+
 
 
 }

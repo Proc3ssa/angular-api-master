@@ -18,6 +18,12 @@ export class PostStoreService {
     return this.postsSubject.getValue();
   }
 
+  addPost(post: Post): void {
+  const current = this.postsSubject.getValue();
+  this.postsSubject.next([post, ...current]);
+}
+
+
   // Caching logic
   saveToCache(page: number, posts: Post[]): void {
     this.cache.set(page, { data: posts, timestamp: Date.now() });
