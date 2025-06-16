@@ -62,4 +62,14 @@ export class ApiService {
     .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
 }
+
+getPaginatedPosts(page: number, limit: number = 10): Observable<Post[]> {
+  const params = new URLSearchParams({ _page: page.toString(), _limit: limit.toString() });
+  return this.http.get<Post[]>(`${this.baseUrl}/posts?${params.toString()}`)
+    .pipe(
+      retry(1),
+      catchError(error => this.errorHandler.handle(error))
+    );
+}
+
 }

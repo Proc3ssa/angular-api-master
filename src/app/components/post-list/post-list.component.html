@@ -11,3 +11,9 @@
     <p>{{ post.body }}</p>
   </li>
 </ul>
+<app-pagination
+  [currentPage]="currentPage"
+  [totalPages]="totalPages"
+  (pageChange)="loadPage($event)">
+</app-pagination>
+
