@@ -27,12 +27,27 @@ export class PostListComponent implements OnInit {
   this.loadPage(1);
 }
 
+clearCache() {
+  this.store.clearCache();
+  this.loadPage(this.currentPage);
+}
+
+
 loadPage(page: number) {
   this.loading = true;
   this.currentPage = page;
 
+  const cached = this.store.getFromCache(page);
+  if (cached) {
+    this.posts = cached;
+    this.loading = false;
+    return;
+  }
+  
+
   this.api.getPaginatedPosts(page).subscribe({
     next: (data) => {
+      this.store.saveToCache(page, data);
       this.posts = data;
       this.loading = false;
     },
@@ -42,5 +57,6 @@ loadPage(page: number) {
     }
   });
 }
+
 
 }
