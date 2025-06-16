@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError, retry } from 'rxjs';
 import { Comment } from '../models/comment';
 import { ErrorService } from './error.service';
+
 
 
 export interface Post {
@@ -23,31 +24,31 @@ export class ApiService {
 
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.baseUrl}/posts`)
-      .pipe(catchError(error => this.errorHandler.handle(error)))
+      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
   getPost(id: number): Observable<Post> {
     return this.http.get<Post>(`${this.baseUrl}/posts/${id}`)
-      .pipe(catchError(error => this.errorHandler.handle(error)))
+      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
   createPost(post: Partial<Post>): Observable<Post> {
     return this.http.post<Post>(`${this.baseUrl}/posts`, post)
-      .pipe(catchError(error => this.errorHandler.handle(error)))
+      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
   updatePost(id: number, post: Partial<Post>): Observable<Post> {
     return this.http.put<Post>(`${this.baseUrl}/posts/${id}`, post)
-      .pipe(catchError(error => this.errorHandler.handle(error)))
+      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
   deletePost(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/posts/${id}`)
-      .pipe(catchError(error => this.errorHandler.handle(error)))
+      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
@@ -58,7 +59,7 @@ export class ApiService {
 
   getPostComments(postId: number): Observable<Comment[]> {
   return this.http.get<Comment[]>(`${this.baseUrl}/posts/${postId}/comments`)
-    .pipe(catchError(error => this.errorHandler.handle(error)))
+    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
 }
 }
