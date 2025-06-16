@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Comment } from '../models/comment';
 
 export interface Post {
   userId: number;
@@ -46,4 +47,9 @@ export class ApiService {
     console.error('API Error:', error);
     return throwError(() => new Error('An error occurred with the API.'));
   }
+
+  getPostComments(postId: number): Observable<Comment[]> {
+  return this.http.get<Comment[]>(`${this.baseUrl}/posts/${postId}/comments`)
+    .pipe(catchError(error => this.handleError(error)));
+}
 }
