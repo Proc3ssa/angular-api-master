@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService, Post} from '../../services/api.service';
 import { Comment } from '../../models/comment';
 import { RouterLink } from '@angular/router';
+import { PostStoreService } from '../../services/post-store.service';
+
 
 @Component({
   selector: 'app-post-details',
@@ -18,25 +20,45 @@ export class PostDetailsComponent implements OnInit {
   loading = true;
   error = '';
 
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  constructor(
+  private route: ActivatedRoute,
+  private api: ApiService,
+  private store: PostStoreService
+) {}
 
-  ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
 
+ ngOnInit(): void {
+  const id = Number(this.route.snapshot.paramMap.get('id'));
+
+  const localPost = this.store.getPostsSnapshot().find(p => p.id === id);
+
+  if (localPost) {
+    this.post = localPost;
+    this.loadComments(id); // ✅ still load comments
+    this.loading = false;
+  } else {
     this.api.getPost(id).subscribe({
-      next: (data) => this.post = data,
-      error: (err) => this.error = err.message
-    });
-
-    this.api.getPostComments(id).subscribe({
       next: (data) => {
-        this.comments = data;
+        this.post = data;
+        this.loadComments(id);
         this.loading = false;
       },
       error: (err) => {
-        this.error = err.message;
+        this.error = err.message || 'Failed to load post.';
         this.loading = false;
       }
     });
   }
+}
+
+private loadComments(postId: number) {
+  this.api.getPostComments(postId).subscribe({
+    next: (data) => this.comments = data,
+    error: (err) => {
+      this.error = err.message || 'Failed to load comments.';
+    }
+  });
+}
+
+
 }
