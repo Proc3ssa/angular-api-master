@@ -1,0 +1,19 @@
+<h2>Post Details</h2>
+
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="post">
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.body }}</p>
+</div>
+
+<hr />
+
+<h4>Comments</h4>
+<ul>
+  <li *ngFor="let comment of comments">
+    <strong>{{ comment.name }} ({{ comment.email }}):</strong>
+    <p>{{ comment.body }}</p>
+  </li>
+</ul>
