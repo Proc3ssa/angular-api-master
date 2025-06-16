@@ -13,7 +13,7 @@ export interface Post {
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private baseUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(private http: HttpClient) {}
 
