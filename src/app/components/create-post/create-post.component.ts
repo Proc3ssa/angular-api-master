@@ -31,6 +31,12 @@ export class CreatePostComponent {
       return;
     }
 
+    if (this.containsProfanity(this.title) || this.containsProfanity(this.body)) {
+  this.error = 'Your post contains inappropriate words.';
+  return;
+}
+
+
     this.api.createPost({ title: this.title, body: this.body, userId: 1 }).subscribe({
   next: (newPost) => {
     this.store.addPost({ ...newPost, id: Date.now() }); // use Date.now() for fake unique id
@@ -42,4 +48,10 @@ export class CreatePostComponent {
       }
     });
   }
+
+  containsProfanity(text: string): boolean {
+  const blocked = ['badword', 'damn', 'ugly', 'bitch', 'fuck']; 
+  return blocked.some(word => text.toLowerCase().includes(word));
+}
+
 }
