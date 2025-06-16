@@ -1,0 +1,19 @@
+<h2>Create New Post</h2>
+
+<form (ngSubmit)="submit()">
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <label>
+    Title:
+    <input [(ngModel)]="title" name="title" required />
+  </label>
+  <br /><br />
+
+  <label>
+    Body:
+    <textarea [(ngModel)]="body" name="body" required></textarea>
+  </label>
+  <br /><br />
+
+  <button type="submit">Create</button>
+</form>
