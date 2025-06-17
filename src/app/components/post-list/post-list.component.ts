@@ -22,6 +22,7 @@ export class PostListComponent implements OnInit {
   error = '';
   currentPage = 1;
   totalPages = 10; 
+  html = document.documentElement;
 
 
   constructor(
@@ -32,9 +33,16 @@ export class PostListComponent implements OnInit {
 ) {}
 
 
+
   ngOnInit(): void {
   this.loadPage(1);
 }
+
+        themeToggle(){
+            this.html.classList.toggle('dark');
+            const theme = this.html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        }
 
 clearCache() {
   this.store.clearCache();
