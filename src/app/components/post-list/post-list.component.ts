@@ -6,13 +6,14 @@ import { RouterLink } from '@angular/router';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, PaginationComponent],
+  imports: [CommonModule, RouterLink, PaginationComponent, HeaderComponent],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
@@ -22,7 +23,6 @@ export class PostListComponent implements OnInit {
   error = '';
   currentPage = 1;
   totalPages = 10; 
-  html = document.documentElement;
 
 
   constructor(
@@ -38,11 +38,7 @@ export class PostListComponent implements OnInit {
   this.loadPage(1);
 }
 
-        themeToggle(){
-            this.html.classList.toggle('dark');
-            const theme = this.html.classList.contains('dark') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-        }
+       
 
 clearCache() {
   this.store.clearCache();
