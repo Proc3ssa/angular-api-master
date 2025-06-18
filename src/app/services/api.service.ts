@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError, retry } from 'rxjs';
 import { Comment } from '../models/comment';
 import { ErrorService } from './error.service';
+import { environment } from '../../environments/environment';
 
 
 
@@ -10,7 +11,8 @@ import { ErrorService } from './error.service';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://jsonplaceholder.typicode.com';
+  
+  private baseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient, private errorHandler: ErrorService) {}
 
