@@ -1,59 +1,101 @@
-# ApiMaster
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+# Angular API Master Project
 
-## Development server
+A production-ready Angular application demonstrating full API integration, authentication, error handling, caching, pagination, and route protection using standalone components.
 
-To start a local development server, run:
+---
+
+##  Features
+
+- Post listing, creation, editing, and viewing
+- API error handling with retry logic
+- Route protection using guards
+- Auth token handling with interceptor
+- Pagination with cache support
+- Environment-specific API configurations
+
+---
+
+## Setup & Run Instructions
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Visit: `http://localhost:4200`
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Credentials
 
-```bash
-ng generate component component-name
-```
+Use `admin` / `admin` to login.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Environment Config
 
-## Building
+- Development: `src/environments/environment.ts`
+- Production: `src/environments/environment.prod.ts`
 
-To build the project run:
+---
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+##  Build for Production
 
 ```bash
-ng test
+ng build --configuration production
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+##  Project Structure
 
-```bash
-ng e2e
+```
+src/
+  app/
+    components/
+    services/
+    guards/
+    interceptors/
+    app.routes.ts
+    app.config.ts
+  environments/
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+##  Available Scripts
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Command | Description |
+|---------|-------------|
+| `ng serve` | Start dev server |
+| `ng build` | Build for production |
+| `ng generate ...` | Generate components, services, etc |
+
+---
+
+##  Author
+
+**Faisal Halid Dene**  
+X: https://x.com/processor_911
+
+---
+
+## Screenshots
+
+| Feature | Screenshot |
+|--------|------------|
+| Home Page | ![Home](screenshots/home.png) |
+| Post Details | ![Details](screenshots/details.png) |
+| Create Post | ![Create](screenshots/create.png) |
+| Login Page | ![Login](screenshots/login.png) |
+
+
+
+---
+
+##  What I Learned
+
+- Angular standalone architecture
+- Clean service and state separation
+- Real-world API communication patterns
