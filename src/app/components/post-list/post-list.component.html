@@ -39,7 +39,7 @@
                     <div class="flex items-start space-x-3">
                         
                         <div>
-                            <h3 class="font-medium">{{post.name}}</h3><hr>
+                            <h3 class="font-medium">{{ post.body | slice:0:10 }}</h3><hr>
                             <p class="mt-1 text-gray-700 dark:text-gray-300">{{post.body}}</p>
 
                             <a style="color: yellow;" [routerLink]="['/posts', post.id]">See more ></a>
