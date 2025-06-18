@@ -32,12 +32,12 @@ export class EditPostComponent implements OnInit {
   const localPost = this.store.getPostsSnapshot().find(p => p.id === this.postId);
 
   if (localPost) {
-    this.title = localPost.name;
+    this.title = localPost.body.slice(0,10);
     this.body = localPost.body;
   } else {
     this.api.getPost(this.postId).subscribe({
       next: (post: Comment) => {
-        this.title = post.name;
+        this.title = post.body.slice(0,10);
         this.body = post.body;
       },
       error: (err) => {

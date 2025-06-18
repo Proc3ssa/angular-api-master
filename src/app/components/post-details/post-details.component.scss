@@ -1,0 +1,171 @@
+ .post-details-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: white;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .page-header {
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #e5e7eb;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin: 0;
+    }
+
+    .post-content {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 32px;
+    }
+
+    .post-header {
+        margin-bottom: 24px;
+    }
+
+    .post-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin: 0 0 12px 0;
+        line-height: 1.3;
+    }
+
+    .post-meta {
+        display: flex;
+        gap: 16px;
+        color: #6b7280;
+        font-size: 0.9rem;
+    }
+
+    .post-meta span {
+        display: flex;
+        align-items: center;
+    }
+
+    .post-body {
+        line-height: 1.7;
+        color: #374151;
+        margin-bottom: 24px;
+    }
+
+    .post-body p {
+        margin-bottom: 16px;
+        font-size: 1rem;
+    }
+
+    .post-body p:last-child {
+        margin-bottom: 0;
+    }
+
+    .edit-btn {
+        background: #3b82f6;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .edit-btn:hover {
+        background: #2563eb;
+    }
+
+    .edit-btn:active {
+        background: #1d4ed8;
+    }
+
+    .comments-section {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    .comments-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin: 0 0 20px 0;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .comment {
+        padding: 16px 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .comment:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .comment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .commenter-name {
+        font-weight: 600;
+        color: #1f2937;
+        font-size: 0.9rem;
+    }
+
+    .comment-date {
+        color: #6b7280;
+        font-size: 0.8rem;
+    }
+
+    .comment-text {
+        color: #374151;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .post-details-container {
+            padding: 16px;
+        }
+
+        .page-header h1 {
+            font-size: 1.5rem;
+        }
+
+        .post-content {
+            padding: 20px;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+        }
+
+        .post-meta {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .comment-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .comments-section {
+            padding: 16px;
+        }
+    }

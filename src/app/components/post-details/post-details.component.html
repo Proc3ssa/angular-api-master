@@ -1,20 +1,39 @@
-<h2>Post Details</h2>
-<a [routerLink]="['/edit', post?.id]">Edit This Post</a>
 
-<div *ngIf="loading">Loading...</div>
-<div *ngIf="error">{{ error }}</div>
+<div class="post-details-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Post Details</h1>
+    </div>
 
-<div *ngIf="post">
-  <h3>{{ post.name}}</h3>
-  <p>{{ post.body }}</p>
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="error">{{ error }}</div>
+
+    <!-- Post Content -->
+    <div class="post-content" *ngIf="post">
+        <div class="post-header">
+            <h2 class="post-title">{{ post.body | slice:0:10 }}</h2>
+            
+        </div>
+
+        <div class="post-body">
+           {{post.body}}
+           <br>
+           <br>
+        <button [routerLink]="['/edit', post?.id]" class="edit-btn" >Edit Post</button>
+       </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+        <h3 class="comments-title">Comments ({{commentNum}})</h3>
+        
+        <div class="comment" *ngFor="let comment of comments">
+            <div class="comment-header">
+                <span class="commenter-name">{{comment.name}}</span>
+                <span class="comment-date"></span>
+            </div>
+            <p class="comment-text">{{comment.body}}</p>
+        </div>
+
+        
+    </div>
 </div>
-
-<hr />
-
-<h4>Comments</h4>
-<ul>
-  <li *ngFor="let comment of comments">
-    <strong>{{ comment.name }} ({{ comment.email }}):</strong>
-    <p>{{ comment.body }}</p>
-  </li>
-</ul>

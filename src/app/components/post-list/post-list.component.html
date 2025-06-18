@@ -1,24 +1,4 @@
-<!-- <a routerLink="/create">+ Create New Post</a>
 
-<h2>All Posts</h2>
-
-<div *ngIf="loading">Loading posts...</div>
-<div *ngIf="error" class="error">{{ error }}</div>
-
-<ul *ngIf="!loading && !error">
-  <li *ngFor="let post of posts">
-    <h3><a [routerLink]="['/posts', post.id]">{{ post.title }}</a></h3>
-    <p>{{ post.body }}</p>
-  </li>
-</ul>
-<app-pagination
-  [currentPage]="currentPage"
-  [totalPages]="totalPages"
-  (pageChange)="loadPage($event)">
-</app-pagination>
-
-<button (click)="clearCache()">Clear Cache</button>
-<button (click)="logout()" style="float: right;">Logout</button> -->
 
 <div class="container mx-auto px-4 py-8">
        <app-header></app-header>
@@ -39,7 +19,7 @@
                     <div class="flex items-start space-x-3">
                         
                         <div>
-                            <h3 class="font-medium">{{post.name}}</h3><hr>
+                            <h3 class="font-medium">{{ post.body | slice:0:10 }}</h3><hr>
                             <p class="mt-1 text-gray-700 dark:text-gray-300">{{post.body}}</p>
 
                             <a style="color: yellow;" [routerLink]="['/posts', post.id]">See more ></a>
