@@ -19,17 +19,18 @@
         <p>Sign in to your account</p>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" (ngSubmit)="login()">
         <div class="input-group">
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter your username" />
+            <input type="text" id="username" placeholder="Enter your username" [(ngModel)]="username" name="username" required  />
         </div>
 
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password" />
+            <input type="password" id="password" placeholder="Enter your password" [(ngModel)]="password" name="password" required type="password" />
         </div>
-
+          <div *ngIf="error" class="error">{{ error }}</div><br />
+         
         <button type="submit" class="login-btn">
             Login
         </button>
