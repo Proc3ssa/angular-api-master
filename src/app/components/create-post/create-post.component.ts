@@ -37,7 +37,7 @@ export class CreatePostComponent {
 }
 
 
-    this.api.createPost({ title: this.title, body: this.body, userId: 1 }).subscribe({
+    this.api.createPost({ name: this.title, body: this.body, id: 1 }).subscribe({
   next: (newPost) => {
     this.store.addPost({ ...newPost, id: Date.now() }); // use Date.now() for fake unique id
     this.router.navigate(['/']);

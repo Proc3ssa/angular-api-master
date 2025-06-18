@@ -28,32 +28,29 @@
            
 
             <!-- Sample comments section -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-all duration-300">
+             <div *ngIf="loading">Loading posts...</div>
+             <div *ngIf="error" class="error">{{ error }}</div>
+
+            <div *ngIf="!loading && !error" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+              
+
+                <div *ngFor="let post of posts" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-all duration-300">
                     <div class="flex items-start space-x-3">
                         <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                             <i class="fas fa-user text-blue-500 dark:text-blue-300"></i>
                         </div>
                         <div>
-                            <h3 class="font-medium">John Doe</h3>
+                            <h3 class="font-medium">{{post.body}}</h3>
                             <p class="text-sm text-gray-500 dark:text-gray-400">Posted 2 hours ago</p>
                             <p class="mt-1 text-gray-700 dark:text-gray-300">This is a sample comment. The theme toggler works great!</p>
+
+                            <a  [routerLink]="['/posts', post.id]">See more ></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-all duration-300">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                            <i class="fas fa-user text-purple-500 dark:text-purple-300"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-medium">Jane Smith</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Posted 5 hours ago</p>
-                            <p class="mt-1 text-gray-700 dark:text-gray-300">I love the dark mode feature. The comment button is conveniently placed too!</p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </main>
     </div>
@@ -71,6 +68,11 @@
             <button class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center space-x-2">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Log Out</span>
+            </button>
+
+            <button (click)="clearCache()" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-red-600 flex items-center space-x-2">
+                <i class="fas fa-clear-alt"></i>
+                <span>Clear cache</span>
             </button>
         </div>
     </div>

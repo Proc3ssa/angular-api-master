@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, Post} from '../../services/api.service';
+import { ApiService} from '../../services/api.service';
 import { Comment } from '../../models/comment';
 import { RouterLink } from '@angular/router';
 import { PostStoreService } from '../../services/post-store.service';
@@ -15,7 +15,7 @@ import { PostStoreService } from '../../services/post-store.service';
   styleUrls: ['./post-details.component.scss']
 })
 export class PostDetailsComponent implements OnInit {
-  post: Post | null = null;
+  post: Comment | null = null;
   comments: Comment[] = [];
   loading = true;
   error = '';

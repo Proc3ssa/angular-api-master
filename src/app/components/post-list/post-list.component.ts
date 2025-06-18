@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostStoreService } from '../../services/post-store.service';
-import { ApiService, Post } from '../../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
+import { Comment } from '../../models/comment';
 
 
 
@@ -18,7 +19,7 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
+  posts: Comment[] = [];
   loading = true;
   error = '';
   currentPage = 1;
