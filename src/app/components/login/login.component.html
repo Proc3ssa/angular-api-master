@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<!-- <h2>Login</h2>
 <form (ngSubmit)="login()">
   <label>
     Username:
@@ -10,4 +10,29 @@
   </label><br />
   <div *ngIf="error" class="error">{{ error }}</div><br />
   <button type="submit">Login</button>
-</form>
+</form> -->
+
+
+<div class="login-container">
+    <div class="login-header">
+        <h2>Login</h2>
+        <p>Sign in to your account</p>
+    </div>
+
+    <form class="login-form" (ngSubmit)="login()">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" [(ngModel)]="username" name="username" required  />
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" [(ngModel)]="password" name="password" required type="password" />
+        </div>
+          <div *ngIf="error" class="error">{{ error }}</div><br />
+         
+        <button type="submit" class="login-btn">
+            Login
+        </button>
+    </form>
+</div>
