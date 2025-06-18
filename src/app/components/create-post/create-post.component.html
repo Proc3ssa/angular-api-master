@@ -1,0 +1,37 @@
+<form #postForm="ngForm" (ngSubmit)="submit()" novalidate>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <label>
+    Title:
+    <input
+      [(ngModel)]="title"
+      name="title"
+      required
+      minlength="5"
+      #titleInput="ngModel"
+    />
+    <div *ngIf="titleInput.invalid && titleInput.touched" class="error">
+      Title must be at least 5 characters.
+    </div>
+  </label>
+
+  <br /><br />
+
+  <label>
+    Body:
+    <textarea
+      [(ngModel)]="body"
+      name="body"
+      required
+      minlength="10"
+      #bodyInput="ngModel"
+    ></textarea>
+    <div *ngIf="bodyInput.invalid && bodyInput.touched" class="error">
+      Body must be at least 10 characters.
+    </div>
+  </label>
+
+  <br /><br />
+
+  <button type="submit" [disabled]="postForm.invalid">Create</button>
+</form>
