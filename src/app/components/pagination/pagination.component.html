@@ -1,7 +1,17 @@
-<nav class="pagination">
+<!-- <nav class="pagination">
   <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
 
   <span>Page {{ currentPage }} of {{ totalPages }}</span>
 
   <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
-</nav>
+</nav> -->
+
+        <div class="flex space-x-2">
+                <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600">
+                    Previous
+                </button>
+                <span>Page {{ currentPage }} of {{ totalPages }}</span>
+                <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600">
+                    Next
+                </button>
+            </div>
