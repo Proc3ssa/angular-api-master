@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService, Post } from '../../services/api.service';
+import { ApiService} from '../../services/api.service';
 import { PostStoreService } from '../../services/post-store.service';
-
+import { Comment } from '../../models/comment';
 
 @Component({
   selector: 'app-edit-post',
@@ -32,12 +32,12 @@ export class EditPostComponent implements OnInit {
   const localPost = this.store.getPostsSnapshot().find(p => p.id === this.postId);
 
   if (localPost) {
-    this.title = localPost.title;
+    this.title = localPost.name;
     this.body = localPost.body;
   } else {
     this.api.getPost(this.postId).subscribe({
-      next: (post: Post) => {
-        this.title = post.title;
+      next: (post: Comment) => {
+        this.title = post.name;
         this.body = post.body;
       },
       error: (err) => {
@@ -59,7 +59,7 @@ export class EditPostComponent implements OnInit {
 }
 
 
-    this.api.updatePost(this.postId, { title: this.title, body: this.body }).subscribe({
+    this.api.updatePost(this.postId, { name: this.title, body: this.body }).subscribe({
       next: () => this.router.navigate(['/posts', this.postId]),
       error: (err) => {
         this.error = err.message || 'Failed to update post.';

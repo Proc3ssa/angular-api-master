@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostStoreService } from '../../services/post-store.service';
-import { ApiService, Post } from '../../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+import { Comment } from '../../models/comment';
 
 
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, PaginationComponent],
+  imports: [CommonModule, RouterLink, PaginationComponent, HeaderComponent],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
+  posts: Comment[] = [];
   loading = true;
   error = '';
   currentPage = 1;
@@ -32,9 +34,12 @@ export class PostListComponent implements OnInit {
 ) {}
 
 
+
   ngOnInit(): void {
   this.loadPage(1);
 }
+
+       
 
 clearCache() {
   this.store.clearCache();

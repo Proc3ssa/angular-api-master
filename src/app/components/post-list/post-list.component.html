@@ -1,4 +1,4 @@
-<a routerLink="/create">+ Create New Post</a>
+<!-- <a routerLink="/create">+ Create New Post</a>
 
 <h2>All Posts</h2>
 
@@ -18,4 +18,54 @@
 </app-pagination>
 
 <button (click)="clearCache()">Clear Cache</button>
-<button (click)="logout()" style="float: right;">Logout</button>
+<button (click)="logout()" style="float: right;">Logout</button> -->
+
+<div class="container mx-auto px-4 py-8">
+       <app-header></app-header>
+
+        <!-- Main content -->
+        <main class="max-w-3xl mx-auto">
+           
+
+            <!-- Sample comments section -->
+             <div *ngIf="loading">Loading posts...</div>
+             <div *ngIf="error" class="error">{{ error }}</div>
+
+            <div *ngIf="!loading && !error" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+              
+
+                <div *ngFor="let post of posts" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-all duration-300">
+                    <div class="flex items-start space-x-3">
+                        
+                        <div>
+                            <h3 class="font-medium">{{post.name}}</h3><hr>
+                            <p class="mt-1 text-gray-700 dark:text-gray-300">{{post.body}}</p>
+
+                            <a style="color: yellow;" [routerLink]="['/posts', post.id]">See more ></a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </main>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mt-8">
+           <app-pagination [currentPage]="currentPage"
+                [totalPages]="totalPages"
+                (pageChange)="loadPage($event)"></app-pagination>
+
+            <button (click)="logout()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center space-x-2">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Log Out</span>
+            </button>
+
+            <button (click)="clearCache()" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-red-600 flex items-center space-x-2">
+                <i class="fas fa-clear-alt"></i>
+                <span>Clear cache</span>
+            </button>
+        </div>
+    </div>

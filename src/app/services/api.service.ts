@@ -6,13 +6,6 @@ import { ErrorService } from './error.service';
 
 
 
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -22,26 +15,26 @@ export class ApiService {
   constructor(private http: HttpClient, private errorHandler: ErrorService) {}
 
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}/posts`)
+  getPosts(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.baseUrl}/comments`)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
-  getPost(id: number): Observable<Post> {
-    return this.http.get<Post>(`${this.baseUrl}/posts/${id}`)
+  getPost(id: number): Observable<Comment> {
+    return this.http.get<Comment>(`${this.baseUrl}/posts/${id}`)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
-  createPost(post: Partial<Post>): Observable<Post> {
-    return this.http.post<Post>(`${this.baseUrl}/posts`, post)
+  createPost(post: Partial<Comment>): Observable<Comment> {
+    return this.http.post<Comment>(`${this.baseUrl}/posts`, post)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
 
-  updatePost(id: number, post: Partial<Post>): Observable<Post> {
-    return this.http.put<Post>(`${this.baseUrl}/posts/${id}`, post)
+  updatePost(id: number, post: Partial<Comment>): Observable<Comment> {
+    return this.http.put<Comment>(`${this.baseUrl}/posts/${id}`, post)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
@@ -63,9 +56,9 @@ export class ApiService {
 ;
 }
 
-getPaginatedPosts(page: number, limit: number = 10): Observable<Post[]> {
+getPaginatedPosts(page: number, limit: number = 10): Observable<Comment[]> {
   const params = new URLSearchParams({ _page: page.toString(), _limit: limit.toString() });
-  return this.http.get<Post[]>(`${this.baseUrl}/posts?${params.toString()}`)
+  return this.http.get<Comment[]>(`${this.baseUrl}/posts?${params.toString()}`)
     .pipe(
       retry(1),
       catchError(error => this.errorHandler.handle(error))
