@@ -18,7 +18,10 @@
                 <div *ngFor="let post of posts" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-all duration-300">
                     <div class="flex items-start space-x-3">
                         
+                        
+
                         <div>
+                            <img src="https://picsum.photos/300/100" alt="img here">
                             <h3 class="font-medium">{{ post.body | slice:0:10 }}</h3><hr>
                             <p class="mt-1 text-gray-700 dark:text-gray-300">{{post.body}}</p>
 
