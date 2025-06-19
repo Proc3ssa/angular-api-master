@@ -1,4 +1,3 @@
-/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditPostComponent } from './edit-post.component';
@@ -26,4 +25,3 @@ describe('EditPostComponent', () => {
     expect(component).toBeDefined();
   });
 });
-*/
