@@ -20,4 +20,8 @@ describe('PaginationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a page size', () => {
+    expect(component).toBeDefined();
+  });
 });

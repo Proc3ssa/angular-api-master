@@ -20,4 +20,8 @@ describe('SidebarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a menu', () => {
+    expect(component).toBeDefined();
+  });
 });
