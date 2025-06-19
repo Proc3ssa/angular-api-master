@@ -1,4 +1,3 @@
-/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PostListComponent } from './post-list.component';
 import { of } from 'rxjs';
@@ -41,4 +40,3 @@ describe('PostListComponent', () => {
     expect(component).toBeDefined();
   });
 });
-*/
