@@ -16,6 +16,7 @@ import { PostStoreService } from '../../services/post-store.service';
 })
 export class PostDetailsComponent implements OnInit {
   post: Comment | null = null;
+  
   comments: Comment[] = [];
   get commentNum(): number {
     return this.comments.length;

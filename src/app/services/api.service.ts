@@ -4,7 +4,7 @@ import { Observable, catchError, throwError, retry } from 'rxjs';
 import { Comment } from '../models/comment';
 import { ErrorService } from './error.service';
 import { environment } from '../../environments/environment';
-
+import { Post } from '../models/post';
 
 
 @Injectable({
@@ -17,8 +17,8 @@ export class ApiService {
   constructor(private http: HttpClient, private errorHandler: ErrorService) {}
 
 
-  getPosts(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.baseUrl}/comments`)
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}/comments`)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
