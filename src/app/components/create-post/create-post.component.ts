@@ -37,11 +37,16 @@ export class CreatePostComponent {
 }
 
 
-    this.api.createPost({ name: this.title, body: this.body, id: 1 }).subscribe({
+  this.api.createPost({ title: this.title, body: this.body, userId: 1 } as any).subscribe({
   next: (newPost) => {
-    this.store.addPost({ ...newPost, id: Date.now() }); // use Date.now() for fake unique id
+    const fakePost = { ...newPost, id: Date.now() };
+
+    this.store.addPost(fakePost); // for completeness (if any component uses store.posts$)
+    this.store.addToPageCache(1, fakePost); // ✅ ensures it appears on page 1
+
     this.router.navigate(['/']);
   },
+
 
       error: (err) => {
         this.error = err.message || 'Failed to create post.';

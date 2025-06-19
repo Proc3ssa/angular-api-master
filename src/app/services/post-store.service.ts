@@ -29,6 +29,17 @@ export class PostStoreService {
     this.cache.set(page, { data: posts, timestamp: Date.now() });
   }
 
+  addToPageCache(page: number, post: Comment): void {
+  const existing = this.cache.get(page);
+  if (existing) {
+    this.cache.set(page, {
+      data: [post, ...existing.data],
+      timestamp: Date.now()
+    });
+  }
+}
+
+
   getFromCache(page: number): Comment[] | null {
     const entry = this.cache.get(page);
     if (!entry) return null;
