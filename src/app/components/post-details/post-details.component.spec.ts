@@ -20,4 +20,8 @@ describe('PostDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a post', () => {
+    expect(component).toBeDefined();
+  });
 });
